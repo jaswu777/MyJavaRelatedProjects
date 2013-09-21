@@ -1,0 +1,855 @@
+import java.io.*;
+import java.util.Scanner;
+import java.util.Random;
+import java.util.ArrayList;
+
+public class FinalTrueVersionOOPDemonstration {
+	// Team Members: Jason Wu, Nadia Chaudhry
+	// Instance Variables set for the whole program.
+	private int computer_guess;
+	private int code;
+	private int counter;
+	private ArrayList<Integer> computer_numbers = new ArrayList<Integer>();
+	private ArrayList<Integer> user_numbers = new ArrayList<Integer>();
+	private int x;
+	private int user_number;
+	private int user_guess;
+	private int test;
+	private int y;
+	private int answer;
+	private int[] player_array = { 1, 2, 3, 4, 5 };
+	private int player_index;
+	private int number_index;
+	private String range_numbers;
+	private int range_max;
+	private int gameType;
+	private int numberGames;
+	private int amount_guesses;
+	private int set_guess;
+
+	private int number_index2;
+	private int code1_game;
+	private int code2_game;
+	private int code3_game;
+	private int code4_game;
+
+	private ArrayList<Integer> gametype1 = new ArrayList<Integer>();
+	private ArrayList<Integer> gametype2 = new ArrayList<Integer>();
+	private ArrayList<Integer> gametype3 = new ArrayList<Integer>();
+	private ArrayList<Integer> gametype4 = new ArrayList<Integer>();
+
+	private int playerWinType1;
+	private int playerWinType1Two;
+	private int playerWinType1Three;
+	private int playerWinType1Four;
+	private int playerWinType1Five;
+
+	private int playerWinType2;
+	private int playerWinType2Two;
+	private int playerWinType2Three;
+	private int playerWinType2Four;
+	private int playerWinType2Five;
+
+	private int playerWinType3;
+	private int playerWinType3Two;
+	private int playerWinType3Three;
+	private int playerWinType3Four;
+	private int playerWinType3Five;
+
+	private int playerWinType4;
+	private int playerWinType4Two;
+	private int playerWinType4Three;
+	private int playerWinType4Four;
+	private int playerWinType4Five;
+
+	private int increment;
+	private int increment2;
+	private int increment3;
+	private int increment4;
+
+	private ArrayList<Integer> playerGuessesType1 = new ArrayList<Integer>();
+	private ArrayList<Integer> playerGuessesType2 = new ArrayList<Integer>();
+	private ArrayList<Integer> playerGuessesType3 = new ArrayList<Integer>();
+	private ArrayList<Integer> playerGuessesType4 = new ArrayList<Integer>();
+
+	private int playerGuessOne;
+	private int playerGuessOne2;
+	private int playerGuessOne3;
+	private int playerGuessOne4;
+	private int playerGuessOne5;
+
+	private int playerGuessTwo;
+	private int playerGuessTwo2;
+	private int playerGuessTwo3;
+	private int playerGuessTwo4;
+	private int playerGuessTwo5;
+
+	private int playerGuessThree;
+	private int playerGuessThree2;
+	private int playerGuessThree3;
+	private int playerGuessThree4;
+	private int playerGuessThree5;
+
+	private int playerGuessFour;
+	private int playerGuessFour2;
+	private int playerGuessFour3;
+	private int playerGuessFour4;
+	private int playerGuessFour5;
+
+	private int guess_set;
+	private int special_counter;
+
+	// Main constructor used for this program.
+	public FinalTrueVersionOOPDemonstration() {
+		// TODO Auto-generated constructor stub
+		counter = 0;
+		x = 0;
+		test = 0;
+		player_index = -1;
+		numberGames = 0;
+		amount_guesses = 0;
+		set_guess = 0;
+
+		code1_game = 0;
+		code2_game = 0;
+		code3_game = 0;
+		code4_game = 0;
+
+		playerWinType1 = 0;
+		playerWinType1Two = 0;
+		playerWinType1Three = 0;
+		playerWinType1Four = 0;
+		playerWinType1Five = 0;
+
+		playerWinType2 = 0;
+		playerWinType2Two = 0;
+		playerWinType2Three = 0;
+		playerWinType2Four = 0;
+		playerWinType2Five = 0;
+
+		playerWinType3 = 0;
+		playerWinType3Two = 0;
+		playerWinType3Three = 0;
+		playerWinType3Four = 0;
+		playerWinType3Five = 0;
+
+		playerWinType4 = 0;
+		playerWinType4Two = 0;
+		playerWinType4Three = 0;
+		playerWinType4Four = 0;
+		playerWinType4Five = 0;
+
+		increment = 0;
+		increment2 = 0;
+		increment3 = 0;
+		increment4 = 0;
+
+		playerGuessOne = 0;
+		playerGuessOne2 = 0;
+
+		playerGuessOne3 = 0;
+		playerGuessOne4 = 0;
+		playerGuessOne5 = 0;
+
+		playerGuessTwo = 0;
+		playerGuessTwo2 = 0;
+		playerGuessTwo3 = 0;
+		playerGuessTwo4 = 0;
+		playerGuessTwo5 = 0;
+
+		playerGuessThree = 0;
+		playerGuessThree2 = 0;
+		playerGuessThree3 = 0;
+		playerGuessThree4 = 0;
+		playerGuessThree5 = 0;
+
+		playerGuessFour = 0;
+		playerGuessFour2 = 0;
+		playerGuessFour3 = 0;
+		playerGuessFour4 = 0;
+		playerGuessFour5 = 0;
+
+		number_index2 = 0;
+		guess_set = 0;
+		special_counter = 0;
+	}
+	// Method later called that selects a random number from a range by user for each round.
+	public void random_number(int user_number, int code_range) {
+		Random random = new Random();
+		this.user_number = user_number;
+		++numberGames;
+		while (computer_numbers.size() < this.user_number) {
+			if (code_range == 3) {
+				gameType = 3;
+				computer_guess = random.nextInt(100) + 1;
+				computer_numbers.add(computer_guess);
+				range_numbers = "1 to 100";
+				range_max = 100;
+			}
+			else if (code_range == 2) {
+				gameType = 2;
+				computer_guess = random.nextInt(50) + 1;
+				computer_numbers.add(computer_guess);
+				range_numbers = "1 to 50";
+				range_max = 50;
+			} 
+			else if (code_range == 1) {
+				gameType = 1;
+				computer_guess = random.nextInt(10) + 1;
+				computer_numbers.add(computer_guess);
+				range_numbers = "1 to 10";
+				range_max = 10;
+			}
+			else if (code_range == 4) {
+				gameType = 4;
+				computer_guess = random.nextInt(1000) + 1;
+				computer_numbers.add(computer_guess);
+				range_numbers = "1 to 1000";
+				range_max = 1000;
+			}
+		}
+		System.out.println("I have chosen a random number for each player in the range of " 
+		+ range_numbers);
+	}
+	// Method that gets user input and increments the number of guesses for the whole game.
+	public void user_input(int user_guess) {
+		this.user_guess = user_guess;
+		user_numbers.add(this.user_guess);
+		++amount_guesses;
+	}
+	// Method that activates only no player guesses correctly and increments the number of tries.
+	public void counter() {
+		++counter;
+		System.out.println("This game will continue until someone guesses their number!");
+	}
+	/* Compared each user guess with the correct computer generated number. Increments user
+	 * indexes and player index for reference later in arrays/lists if needed and resets them if
+	 * needed when the list references have been exhausted. Returns a certain code number indicating
+	 * different outputs depending on smaller/bigger/even matching outputs. */
+	public void comparison() {
+		if (user_numbers.get(x) > computer_numbers.get(x)) {
+			code = 1;
+		} 
+		else if (user_numbers.get(x) < computer_numbers.get(x)) {
+			code = 2;
+		}
+		else if (user_numbers.get(x) == computer_numbers.get(x)) {
+			code = 3;
+		}
+		else if (user_numbers.get(x) != computer_numbers.get(x)) {
+			code = 3;
+		}
+		y = x;
+		++player_index;
+		if (player_index > this.user_number - 1) {
+			player_index = 0;
+		}
+		++x;
+		if (x > this.user_number - 1) {
+			x = 0;
+		}
+	}
+	/* Deciphers the code from previous method and outputs proper program output to user. 
+	 * In addition, the code aforementioned also calculates and outputs to an array holding values
+	 * that correspond to the "least amount of guesses in correlation with amount guessed correctly".
+	 * */
+	/* Alternative way if more bugs/errors/defects do pop up is that to RESET amount_guesses to 
+	 * 0. Before doing that, add the original value to the array/list. Each time this loops through
+	 * in the program, do only the standard (divided by player number once type deal) equation, 
+	 * get the resulting value, and then add/increment it to the corresponding existing value in 
+	 * the proper array/list etc. Convert int to String etc. And then reset amount_guesses to 0. */
+	public void print_output() {
+		if (code == 1) {
+			System.out.println("Too High! Player " + player_array[player_index]);
+		} 
+		else if (code == 2) {
+			System.out.println("Too low! Player " + player_array[player_index]);
+		} 
+		else if (code == 3) {
+			System.out.println("They're equal! Correct! Player " + player_array[player_index]);
+			++test;
+			answer = user_numbers.get(y);
+			number_index = player_array[player_index];
+			number_index2 = player_index;
+			set_guess = amount_guesses;
+			++special_counter;
+			if (guess_set == 2) {
+				if (special_counter == 1 || (test > 1 && numberGames == 1)) {
+					set_guess = set_guess / 2;
+				} 
+				else if (special_counter > 1) {
+					set_guess = set_guess / 2;
+					set_guess = set_guess / 2;
+				}
+			} 
+			else if (guess_set == 3) {
+				if (special_counter == 1 || (test > 1 && numberGames == 1)) {
+					set_guess = set_guess / 3;
+				} 
+				else if (special_counter > 1) {
+					set_guess = set_guess / 3;
+					set_guess = set_guess / 3;
+				}
+			} 
+			else if (guess_set == 4) {
+				if (special_counter == 1 || (test > 1 && numberGames == 1)) {
+					set_guess = set_guess / 4;
+				} 
+				else if (special_counter > 1) {
+					set_guess = set_guess / 4;
+					set_guess = set_guess / 4;
+				}
+			} 
+			else if (guess_set == 5) {
+				if (special_counter == 1 || (test > 1 && numberGames == 1)) {
+					set_guess = set_guess / 5;
+				} 
+				else if (special_counter > 1) {
+					set_guess = set_guess / 5;
+					set_guess = set_guess / 5;
+				}
+			}
+			String set_convert = "";
+			if (gameType == 1) {
+				set_convert = String.valueOf(set_guess);
+				playerGuessesType1.remove(number_index2);
+				playerGuessesType1.add(number_index2,
+						Integer.parseInt(set_convert));
+			} 
+			else if (gameType == 2) {
+				set_convert = String.valueOf(set_guess);
+				playerGuessesType2.remove(number_index2);
+				playerGuessesType2.add(number_index2,
+						Integer.parseInt(set_convert));
+			} 
+			else if (gameType == 3) {
+				set_convert = String.valueOf(set_guess);
+				playerGuessesType3.remove(number_index2);
+				playerGuessesType3.add(number_index2,
+						Integer.parseInt(set_convert));
+			} 
+			else if (gameType == 4) {
+				set_convert = String.valueOf(set_guess);
+				playerGuessesType4.remove(number_index2);
+				playerGuessesType4.add(number_index2,
+						Integer.parseInt(set_convert));
+			}
+		}
+	}
+	// clears the user array that stores user inputted numbers.
+	public void clear_list() {
+		user_numbers.clear();
+	}
+	// Clears the computer generated correct numbers array/list. 
+	public void clear_list2() {
+		computer_numbers.clear();
+	}
+	// Clears the incremental counter that checks/detects for more than 1 winners. 
+	public void clear_test() {
+		test = 0;
+	}
+	// Clears the overall round counter for tries for the game after each round.
+	public void clear_counter() {
+		counter = 0;
+	}
+	// Checks proper corresponding values for more than 1 winners or outputs a single winner. 
+	public void test_output() {
+		if (test > 1) {
+			System.out.println("It's a freaking tie!! Nobody won by definition!");
+		} 
+		else if (test == 1) {
+			System.out.println("Player " + number_index + " has finally guessed " + "the " 
+					+ "number " + answer + " in " + counter + " tries.");
+			if (gameType == 1) {
+				increment = gametype1.get(number_index2);
+				++increment;
+				gametype1.remove(number_index2);
+				gametype1.add(number_index2, increment);
+			} 
+			else if (gameType == 2) {
+				increment2 = gametype2.get(number_index2);
+				++increment2;
+				gametype2.remove(number_index2);
+				gametype2.add(number_index2, increment2);
+			} 
+			else if (gameType == 3) {
+				increment3 = gametype3.get(number_index2);
+				++increment3;
+				gametype3.remove(number_index2);
+				gametype3.add(number_index2, increment3);
+			} 
+			else if (gameType == 4) {
+				increment4 = gametype4.get(number_index2);
+				++increment4;
+				gametype4.remove(number_index2);
+				gametype4.add(number_index2, increment4);
+			}
+		}
+	}
+	// Increments corresponding gameType values counters for end of game statistics board. 
+	// Keeps track of how many gametypes played with the whole program. 
+	public void gameTypeIncrements() {
+		if (gameType == 1) {
+			++code1_game;
+		} 
+		else if (gameType == 2) {
+			++code2_game;
+		} 
+		else if (gameType == 3) {
+			++code3_game;
+		} 
+		else if (gameType == 4) {
+			++code4_game;
+		}
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		// Calls this class's object into existence in order to use its methods and values. 
+		FinalTrueVersionOOPDemonstration test = new FinalTrueVersionOOPDemonstration();
+		// Instantiates the console program input objects as each ones gets exhausted quickly. 
+		Scanner in = new Scanner(System.in);
+		Scanner in3 = new Scanner(System.in);
+		Scanner in4 = new Scanner(System.in);
+		Scanner in2 = new Scanner(System.in);
+		Scanner in5 = new Scanner(System.in);
+		// Creates values/variables that will be used later for checking user players and responses.
+		int[] user_players = { 1, 2, 3, 4, 5 };
+		int player_number;
+		int number_range;
+		int user_answer;
+		boolean input_response = true;
+		Random randomGenerator = new Random();
+		String dataFileNumber = "";
+		/* Creates a unique file specific number that appends to the preset file name for the file
+		 * path. So that no file is overwritten by the same. Different files each time. Watch your
+		 * computer memory as a caution. */
+		for (int randomGenCounter = 0; randomGenCounter < 7; ++randomGenCounter) {
+			String real_value = String.valueOf(randomGenerator.nextInt(10));
+			dataFileNumber = dataFileNumber + real_value;
+		}
+		/* Creates an absolute file path to the desktop (me the creator and my computer to save 
+		 * records and data after the program terminates. */
+		File playerStats = new File("C:/Users/ibm thinkpad/Desktop/playerStatsRecord" + 
+		dataFileNumber + ".txt");
+		// Allows data to be outputted from the file and be written to real time. 
+		DataOutputStream playerData = new DataOutputStream(new FileOutputStream(playerStats));
+		String playerName = "";
+		String firstName;
+		String lastName;
+		int numberOfGames = 1;
+		ArrayList<String> playerArray = new ArrayList<String>();
+		String identifier_number = "";
+		// Starts the actual program/game/demonstration. 
+		System.out.println("Welcome to the Random Guess Number Game!");
+		System.out.println("Please pick a number of players from 2 to 5: ");
+		// User error checking for integers. 
+		while (!in.hasNextInt()) {
+			System.out.println("Please try inputting a REAL integer: ");
+			in.nextLine();
+		}
+		player_number = in.nextInt();
+		// More user error checking for integers/player numbers. 
+		while (player_number > 5 || player_number < 2) {
+			System.out.println("Please pick a number between 2 and 5... ");
+			while (!in.hasNextInt()) {
+				System.out.println("Please try inputting a REAL integer: ");
+				in.nextLine();
+			}
+			player_number = in.nextInt();
+		}
+		/* Sets the variable to the player number for reference later in the comparison and output 
+		 * methods. */
+		test.guess_set = player_number;
+		/* The following selection statements determine the amount of players to be participating 
+		 * and then adds the proper amount of parameters to the arrays that references values 
+		 * corresponding to amount of player wins by each gametype for the high scores and player
+		 * calculation board in the end. */
+		if (player_number == 2) {
+			test.gametype1.add(test.playerWinType1);
+			test.gametype1.add(test.playerWinType1Two);
+
+			test.gametype2.add(test.playerWinType2);
+			test.gametype2.add(test.playerWinType2Two);
+
+			test.gametype3.add(test.playerWinType3);
+			test.gametype3.add(test.playerWinType3Two);
+
+			test.gametype4.add(test.playerWinType4);
+			test.gametype4.add(test.playerWinType4Two);
+
+			test.playerGuessesType1.add(test.playerGuessOne);
+			test.playerGuessesType1.add(test.playerGuessOne2);
+
+			test.playerGuessesType2.add(test.playerGuessTwo);
+			test.playerGuessesType2.add(test.playerGuessTwo2);
+
+			test.playerGuessesType3.add(test.playerGuessThree);
+			test.playerGuessesType3.add(test.playerGuessThree2);
+
+			test.playerGuessesType4.add(test.playerGuessFour);
+			test.playerGuessesType4.add(test.playerGuessFour2);
+		} 
+		else if (player_number == 3) {
+			test.gametype1.add(test.playerWinType1);
+			test.gametype1.add(test.playerWinType1Two);
+			test.gametype1.add(test.playerWinType1Three);
+
+			test.gametype2.add(test.playerWinType2);
+			test.gametype2.add(test.playerWinType2Two);
+			test.gametype2.add(test.playerWinType2Three);
+
+			test.gametype3.add(test.playerWinType3);
+			test.gametype3.add(test.playerWinType3Two);
+			test.gametype3.add(test.playerWinType3Three);
+
+			test.gametype4.add(test.playerWinType4);
+			test.gametype4.add(test.playerWinType4Two);
+			test.gametype4.add(test.playerWinType4Three);
+
+			test.playerGuessesType1.add(test.playerGuessOne);
+			test.playerGuessesType1.add(test.playerGuessOne2);
+			test.playerGuessesType1.add(test.playerGuessOne3);
+
+			test.playerGuessesType2.add(test.playerGuessTwo);
+			test.playerGuessesType2.add(test.playerGuessTwo2);
+			test.playerGuessesType2.add(test.playerGuessTwo3);
+
+			test.playerGuessesType3.add(test.playerGuessThree);
+			test.playerGuessesType3.add(test.playerGuessThree2);
+			test.playerGuessesType3.add(test.playerGuessThree3);
+
+			test.playerGuessesType4.add(test.playerGuessFour);
+			test.playerGuessesType4.add(test.playerGuessFour2);
+			test.playerGuessesType4.add(test.playerGuessFour3);
+		} 
+		else if (player_number == 4) {
+			test.gametype1.add(test.playerWinType1);
+			test.gametype1.add(test.playerWinType1Two);
+			test.gametype1.add(test.playerWinType1Three);
+			test.gametype1.add(test.playerWinType1Four);
+
+			test.gametype2.add(test.playerWinType2);
+			test.gametype2.add(test.playerWinType2Two);
+			test.gametype2.add(test.playerWinType2Three);
+			test.gametype2.add(test.playerWinType2Four);
+
+			test.gametype3.add(test.playerWinType3);
+			test.gametype3.add(test.playerWinType3Two);
+			test.gametype3.add(test.playerWinType3Three);
+			test.gametype3.add(test.playerWinType3Four);
+
+			test.gametype4.add(test.playerWinType4);
+			test.gametype4.add(test.playerWinType4Two);
+			test.gametype4.add(test.playerWinType4Three);
+			test.gametype4.add(test.playerWinType4Four);
+
+			test.playerGuessesType1.add(test.playerGuessOne);
+			test.playerGuessesType1.add(test.playerGuessOne2);
+			test.playerGuessesType1.add(test.playerGuessOne3);
+			test.playerGuessesType1.add(test.playerGuessOne4);
+
+			test.playerGuessesType2.add(test.playerGuessTwo);
+			test.playerGuessesType2.add(test.playerGuessTwo2);
+			test.playerGuessesType2.add(test.playerGuessTwo3);
+			test.playerGuessesType2.add(test.playerGuessTwo4);
+
+			test.playerGuessesType3.add(test.playerGuessThree);
+			test.playerGuessesType3.add(test.playerGuessThree2);
+			test.playerGuessesType3.add(test.playerGuessThree3);
+			test.playerGuessesType3.add(test.playerGuessThree4);
+
+			test.playerGuessesType4.add(test.playerGuessFour);
+			test.playerGuessesType4.add(test.playerGuessFour2);
+			test.playerGuessesType4.add(test.playerGuessFour3);
+			test.playerGuessesType4.add(test.playerGuessFour4);
+		} 
+		else if (player_number == 5) {
+			test.gametype1.add(test.playerWinType1);
+			test.gametype1.add(test.playerWinType1Two);
+			test.gametype1.add(test.playerWinType1Three);
+			test.gametype1.add(test.playerWinType1Four);
+			test.gametype1.add(test.playerWinType1Five);
+
+			test.gametype2.add(test.playerWinType2);
+			test.gametype2.add(test.playerWinType2Two);
+			test.gametype2.add(test.playerWinType2Three);
+			test.gametype2.add(test.playerWinType2Four);
+			test.gametype2.add(test.playerWinType2Five);
+
+			test.gametype3.add(test.playerWinType3);
+			test.gametype3.add(test.playerWinType3Two);
+			test.gametype3.add(test.playerWinType3Three);
+			test.gametype3.add(test.playerWinType3Four);
+			test.gametype3.add(test.playerWinType3Five);
+
+			test.gametype4.add(test.playerWinType4);
+			test.gametype4.add(test.playerWinType4Two);
+			test.gametype4.add(test.playerWinType4Three);
+			test.gametype4.add(test.playerWinType4Four);
+			test.gametype4.add(test.playerWinType4Five);
+
+			test.playerGuessesType1.add(test.playerGuessOne);
+			test.playerGuessesType1.add(test.playerGuessOne2);
+			test.playerGuessesType1.add(test.playerGuessOne3);
+			test.playerGuessesType1.add(test.playerGuessOne4);
+			test.playerGuessesType1.add(test.playerGuessOne5);
+
+			test.playerGuessesType2.add(test.playerGuessTwo);
+			test.playerGuessesType2.add(test.playerGuessTwo2);
+			test.playerGuessesType2.add(test.playerGuessTwo3);
+			test.playerGuessesType2.add(test.playerGuessTwo4);
+			test.playerGuessesType2.add(test.playerGuessTwo5);
+
+			test.playerGuessesType3.add(test.playerGuessThree);
+			test.playerGuessesType3.add(test.playerGuessThree2);
+			test.playerGuessesType3.add(test.playerGuessThree3);
+			test.playerGuessesType3.add(test.playerGuessThree4);
+			test.playerGuessesType3.add(test.playerGuessThree5);
+
+			test.playerGuessesType4.add(test.playerGuessFour);
+			test.playerGuessesType4.add(test.playerGuessFour2);
+			test.playerGuessesType4.add(test.playerGuessFour3);
+			test.playerGuessesType4.add(test.playerGuessFour4);
+			test.playerGuessesType4.add(test.playerGuessFour5);
+		}
+		int nameLoop = player_number;
+		int playerCount = 1;
+		/* The following loop gets input from each player in the form of a full name and adds it
+		 * to the player array that will store all its values and records to an external readable 
+		 * text file as created above. In addition, a random unique player identifier is also 
+		 * generated and then outputted to the textfile for references and records. */
+		for (int v = nameLoop; v > 0; --v) {
+			System.out.println("Player " + playerCount + " " + "please enter your first name");
+			firstName = in5.nextLine();
+			System.out.println("Player " + playerCount + " " + " please enter your last name");
+			lastName = in5.nextLine();
+			++playerCount;
+			playerName = lastName + ", " + firstName;
+			Random random2 = new Random();
+			for (int y = 0; y < 5; ++y) {
+				int a = random2.nextInt(10);
+				String b = String.valueOf(a);
+				identifier_number = identifier_number + b;
+			}
+			playerArray.add(identifier_number + ": " + playerName);
+			System.out.println("For your reference in records, your identifier number is " +
+					identifier_number);
+			identifier_number = "";
+			System.out.println();
+		}
+		// Main body loop that allows players to choose a number range/gametype and start the game!
+		while (input_response) {
+			System.out.println("Please choose a number range from the following:");
+			System.out.println("1 for (1 to 10), 2 for (1 to 50), 3 for (1 to 100) or 4 " +
+					"for (1 to 1000)");
+			// Typical user error input checking. 
+			while (!in3.hasNextInt()) {
+				System.out.println("This is not a number choice. Please enter a valid number: ");
+				in3.nextLine();
+			}
+			number_range = in3.nextInt();
+			// More embedded user error input checking. 
+			while (number_range > 4 || number_range < 1) {
+				System.out.println("Please choose within the correct number range: ");
+				while (!in3.hasNextInt()) {
+					System.out.println("THIS isn't a number! Try again: ");
+					in3.nextLine();
+				}
+				number_range = in3.nextInt();
+			}
+			// Uses methods to generate the random computer numbers and increment Gametype counters.
+			test.random_number(player_number, number_range);
+			test.gameTypeIncrements();
+			// Main body loop of the program where the game and guessing takes place in.
+			while (test.test == 0) {
+				test.counter();
+				//System.out.println(test.computer_numbers.get(0));
+				//System.out.println(test.computer_numbers.get(1));
+				// System.out.println(test.computer_numbers.get(2));
+				// System.out.println(test.computer_numbers.get(3));
+				// System.out.println(test.computer_numbers.get(4));
+				// Loop below singles out each player and asks each for their individual input. 
+				for (int index = 0; test.user_numbers.size() < player_number; ++index) {
+					System.out.println("Please enter a number between "
+							+ test.range_numbers + " for player " + user_players[index]);
+					// More user error checking. 
+					while (!in.hasNextInt()) {
+						System.out.println("Please try inputting a REAL integer: ");
+						in.nextLine();
+					}
+					user_answer = in.nextInt();
+					// Extra level of user error checking. 
+					while (user_answer > test.range_max || user_answer < 1) {
+						System.out.println("Please pick a number between 1 and " 
+						+ test.range_max + "...");
+						while (!in.hasNextInt()) {
+							System.out.println("Please try inputting a REAL integer: ");
+							in.nextLine();
+						}
+						user_answer = in.nextInt();
+					}
+					// Method that takes user input individually and increments the guesses counter.
+					test.user_input(user_answer);
+				}
+				// Loop that checks each individual user input and outputs result of comparison. 
+				for (int number_counter = 0; number_counter < player_number; ++number_counter) {
+					test.comparison();
+					test.print_output();
+				}
+				// Clears the user input list for next set of fresh user generated inputs if needed.
+				test.clear_list();
+			}
+			// Only breaks out of the above main loop if a tie or a winner has been determined. 
+			// Outputs the comparison results in favor of either a tie OR an individual player win.
+			test.test_output();
+			String typeOfGame = String.valueOf(test.gameType);
+			// Writes the Round number to the player data external text file. 
+			playerData.writeBytes(" Round: " + numberOfGames + "\n");
+			// Loop that outputs current state of game statistics after each game/round number.
+			for (int i = 0; i < playerArray.size(); ++i) {
+				System.out.println("");
+				System.out.println("Here are your stats so far!");
+				// Also writes to the external text file while outputting it all simultaneously.
+				System.out.println(playerArray.get(i)
+						+ " Tries for this game type: " + test.counter + " " 
+						+ "Game Type: " + typeOfGame + " Type One Wins: "
+						+ test.gametype1.get(i) + " Type 2 Wins: " 
+						+ test.gametype2.get(i) + " Type 3 Wins: "
+						+ test.gametype3.get(i) + " Type 4 Wins: " + test.gametype4.get(i)
+						+ " Number of total games played " + "so far: " + test.numberGames);
+				System.out.println("Number of games played by GameType so far; GameType One: " 
+						+ test.code1_game + " : GameType Two: " + test.code2_game 
+						+ " : GameType Three: " + test.code3_game  + " : GameType Three: " 
+						+ test.code4_game);
+				playerData.writeBytes(playerArray.get(i)
+						+ " Tries for this game type: " + test.counter + " "
+						+ "Game Type: " + typeOfGame + " Type One Wins: "
+						+ test.gametype1.get(i) + " Type 2 Wins: "
+						+ test.gametype2.get(i) + " Type 3 Wins: "
+						+ test.gametype3.get(i) + " Type 4 Wins: " + test.gametype4.get(i) + "\n");
+				playerData.writeBytes(playerArray.get(i) + 
+						" Number of games played by GameType so far; GameType One: "
+						+ test.code1_game + " : GameType Two: "
+						+ test.code2_game + " : GameType Three: " 
+						+ test.code3_game + " : GameType Three: " + test.code4_game + "\n");
+			}
+			// Increments the number of rounds/games played after each round/game is completed.
+			numberOfGames++;
+			// Prompts user if they want to play again. 
+			System.out.println("Would you like to play again? Y/N ");
+			String response = in2.nextLine();
+			// A loop that user checks for user input to the question above. 
+			while (!response.equals("Y") && !response.equals("N")) {
+				if (response.equals("n") || response.equals("y")) {
+					System.out.println("Response must be entered in uppercase ");
+					response = in2.nextLine();
+				} 
+				else {
+					System.out.println("PLEASE enter either Y or N: ");
+					response = in2.nextLine();
+				}
+			}
+			/* If user response is yes, clear the following lists and counters and then restart the
+			 * game while incrementing the previous stored values into the file sheet. */
+			if (response.equals("Y")) {
+				test.clear_list2();
+				test.clear_test();
+				test.clear_counter();
+				input_response = true;
+			} 
+			// Otherwise, break out of the loop as game ends. 
+			else {
+				input_response = false;
+			}
+		}
+		// Closing output statements. 
+		System.out.println("Thank you for playing!");
+		System.out.println("");
+		// Prompts to ask user if they would like to see the final compiled statistics for the game.
+		System.out.println("Would you like to view the final stats for this game?");
+		System.out.println("Please enter Y/N:");
+		Scanner statView = new Scanner(System.in);
+		String statViewResponse = statView.nextLine();
+		// More user error checking for proper input response. 
+		while (!statViewResponse.equals("Y") && !statViewResponse.equals("N")) {
+			if (statViewResponse.equals("n") || statViewResponse.equals("y")) {
+				System.out.println("Response must be entered in uppercase ");
+				statViewResponse = statView.nextLine();
+			} 
+			else {
+				System.out.println("PLEASE enter either Y or N: ");
+				statViewResponse = statView.nextLine();
+			}
+		}
+		// If response is yes, output the high scores for each player that participated from file.
+		if (statViewResponse.equals("Y")) {
+			String conversion = "";
+			String conversion_next = "";
+			String conversion_next2 = "";
+			String conversion_next3 = "";
+			System.out.println("High Scores: ");
+			// Also write to the file. 
+			playerData.writeBytes("High Scores: " + "\n");
+			int getAtMe;
+			// loop that outputs from file while writing to file overall for the program. 
+			for (int j = 0; j < playerArray.size(); j++) {
+				System.out.println(playerArray.get(j));
+				int w = j + 1;
+				getAtMe = test.gametype1.get(j) + test.gametype2.get(j) 
+						+ test.gametype3.get(j) + test.gametype4.get(j);
+				System.out.println("Final Total of Wins for Player " + w
+						+ " is: " + getAtMe);
+				playerData.writeBytes(" Final Total of Wins for Player " + w 
+						+ " is: " + getAtMe + "\n");
+			}
+			// Outputs the grand total number statistics for games played by varying degrees. 
+			System.out.println("Grand Total Number of Games Played: " + test.numberGames);
+			System.out.println("Grand Total Number of Games Played by each GameType: GameType One: "
+					+ test.code1_game + " : GameType Two: " + test.code2_game + " : GameType Three: "
+					+ test.code3_game + " : GameType Four: " + test.code4_game);
+			playerData.writeBytes(" Final Number of Games: " + String.valueOf(test.numberGames) + "\n");
+			playerData.writeBytes(" Grand Total Number of Games Played by each GameType: GameType One: "
+					+ test.code1_game + " : GameType Two: " + test.code2_game + " : GameType Three: "
+					+ test.code3_game + " : GameType Four: " + test.code4_game);
+			System.out.println("");
+			System.out.println("High Scores per player are as follows by: Game Type 1, Game Type 2, "
+					+ "Game Type 3, and Game Type 4");
+			/* Outputting the final high scores by least amount of guesses in correlation to amount
+			 * scored/guessed correctly. Errors and defects minimized in algorithm. */
+			for (int q = 0; q < playerArray.size(); ++q) {
+				conversion = String.valueOf(test.playerGuessesType1.get(q));
+				conversion_next = String.valueOf(test.playerGuessesType2.get(q));
+				conversion_next2 = String.valueOf(test.playerGuessesType3.get(q));
+				conversion_next3 = String.valueOf(test.playerGuessesType4.get(q));
+				int z = q + 1;
+				System.out.println("Least amount for guesses and guessed right for Player " + z + ": "
+				+ conversion + " : " + conversion_next + " : " + conversion_next2 + " : " 
+				+ conversion_next3);
+				playerData.writeBytes(" Least amount for guesses and guessed right for Player "
+						+ z + ": " + conversion + " : " + conversion_next + " : " + conversion_next2
+						+ " : " + conversion_next3);
+			}
+			System.out.println("Have a great day!");
+			System.out.println("Please play again soon!");
+		} 
+		else {
+			// Otherwise, skip the end of the program with farewell messages. 
+			System.out.println("Have a great day!");
+			System.out.println("Please play again soon!");
+		}
+		/* Right before the program ends, close off all input objects and file writing and reading 
+		 * objects to prevent cautionary leaks and memory leaks. */
+		in.close();
+		in3.close();
+		in2.close();
+		in4.close();
+		in5.close();
+		statView.close();
+		playerData.close();
+	}
+}
+
